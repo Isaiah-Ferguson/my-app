@@ -259,22 +259,7 @@ const Dashboard = () => {
                   placeholder="Choose Image"
                   required
                 /> */}
-                    <CldUploadWidget uploadPreset="Next_App_Blob"
-                    onSuccess={
-                        (uploadResponse) => {
-                    const imageUrl: ICloudImage = uploadResponse as ICloudImage;
-                    setImage(imageUrl.info.url)
-                            // You can use the imageUrl for further processing or display
-                        }
-                    }>
-                        {({ open }) => {
-                            return (
-                            <button className="button" onClick={() => open()}>
-                                Upload
-                            </button>
-                            );
-                        }}
-                    </CldUploadWidget>
+
               </div>
               <div className="flex items-center gap-2">
                 <Dropdown label="Dropdown button" dismissOnClick={true}>
@@ -290,6 +275,22 @@ const Dashboard = () => {
                 </Dropdown>
               </div>
             </form>
+            <CldUploadWidget uploadPreset="Next_App_Blob"
+                    onSuccess={
+                        (uploadResponse) => {
+                    const imageUrl: ICloudImage = uploadResponse as ICloudImage;
+                    setImage(imageUrl.info.url)
+                            // You can use the imageUrl for further processing or display
+                        }
+                    }>
+                        {({ open }) => {
+                            return (
+                            <button className="button" onClick={() => open()}>
+                                Upload
+                            </button>
+                            );
+                        }}
+                    </CldUploadWidget>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={handleSave}>Save and Publish</Button>
