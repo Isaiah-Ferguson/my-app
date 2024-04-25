@@ -17,7 +17,6 @@ import { IToken } from "@/Interfaces/Interfaces";
 export default function Home() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
   const [switchBool, setSwitchBool] = useState<boolean>(true);
 
   const router = useRouter();

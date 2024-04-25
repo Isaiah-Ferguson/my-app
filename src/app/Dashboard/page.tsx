@@ -9,22 +9,8 @@ import { addBlogItem, checkToken, getBlogItemsByUserId, loggedinData, updateBlog
 import { useRouter } from "next/navigation";
 import { CldUploadWidget } from "next-cloudinary";
 
-import { NextApiRequest, NextApiResponse } from 'next';
-
-export async function getStaticProps(context: any) {
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-
-  // You can use cloudName here to fetch data or perform server-side operations
-
-  return {
-    props: {
-      cloudName,
-    },
-  };
-}
-
 //User's Dashboard page with their Published and unpublished Blog entries, We will also add / Edit blog Entries
-const Dashboard = ({ cloudName}: any) => {
+const Dashboard = () => {
   const [openModal, setOpenModal] = useState(false);
   const [blogItems, setBlogItems] = useState<IBlogItems[]>();
   //Forms
@@ -276,7 +262,7 @@ const Dashboard = ({ cloudName}: any) => {
                 </Dropdown>
               </div>
             </form>
-            <CldUploadWidget uploadPreset={cloudName}
+            <CldUploadWidget uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}
                     onSuccess={
                         (uploadResponse) => {
                     const imageUrl: ICloudImage = uploadResponse as ICloudImage;
