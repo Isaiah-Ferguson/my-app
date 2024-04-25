@@ -259,7 +259,8 @@ const Dashboard = () => {
                   placeholder="Choose Image"
                   required
                 /> */}
-                    <CldUploadWidget uploadPreset="Next_App_Blob" onSuccess={
+                    <CldUploadWidget uploadPreset="Next_App_Blob"
+                    onSuccess={
                         (uploadResponse) => {
                     const imageUrl: ICloudImage = uploadResponse as ICloudImage;
                     setImage(imageUrl.info.url)

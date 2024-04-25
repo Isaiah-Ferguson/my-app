@@ -75,12 +75,12 @@ export default function Home() {
         <TextInput id="password1" type="password" required onChange={(e) => setPassword(e.target.value)} />
       </div>
       <div className="flex items-center gap-2">
-        <Button style={{backgroundColor: "wheat"}} onClick={handleSwitch}>{switchBool ? 'Already have an Account?' : 'Sign up'}</Button>
+        <Button onClick={handleSwitch}>{switchBool ? 'Already have an Account?' : 'Sign up'}</Button>
       </div>
-      <Button style={{backgroundColor: 'whitesmoke'}} onClick={handleSubmit}>Submit</Button>
+      <Button onClick={handleSubmit}>Submit</Button>
     </form>
         </div>
-
+      <Button>Test</Button>
       </div>
   );
 }
