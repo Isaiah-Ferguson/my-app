@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Button,
-  Label,
-  TextInput,
-  Modal,
-  FileInput,
-  Dropdown,
-  Accordion,
-  ListGroup,
-} from "flowbite-react";
+import { Button,Label,TextInput,Modal,FileInput,Dropdown,Accordion,ListGroup,} from "flowbite-react";
 import React, { useEffect, useState } from "react";
 //the @ when pathing through our folder structure represents our root folder
 import { IBlogItems, ICloudImage } from "@/Interfaces/Interfaces";
@@ -17,10 +8,23 @@ import NavbarComponent from "../components/NavbarComponent";
 import { addBlogItem, checkToken, getBlogItemsByUserId, loggedinData, updateBlogItem } from "@/utils/Dataservices";
 import { useRouter } from "next/navigation";
 import { CldUploadWidget } from "next-cloudinary";
-import { url } from "inspector";
+
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export async function getStaticProps(context: any) {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+  // You can use cloudName here to fetch data or perform server-side operations
+
+  return {
+    props: {
+      cloudName,
+    },
+  };
+}
 
 //User's Dashboard page with their Published and unpublished Blog entries, We will also add / Edit blog Entries
-const Dashboard = () => {
+const Dashboard = ({ cloudName}: any) => {
   const [openModal, setOpenModal] = useState(false);
   const [blogItems, setBlogItems] = useState<IBlogItems[]>();
   //Forms
@@ -272,7 +276,7 @@ const Dashboard = () => {
                 </Dropdown>
               </div>
             </form>
-            <CldUploadWidget uploadPreset="Next_App_Blob"
+            <CldUploadWidget uploadPreset={cloudName}
                     onSuccess={
                         (uploadResponse) => {
                     const imageUrl: ICloudImage = uploadResponse as ICloudImage;
