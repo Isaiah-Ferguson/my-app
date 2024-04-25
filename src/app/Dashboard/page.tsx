@@ -249,9 +249,6 @@ const Dashboard = () => {
                 />
               </div>
               <div>
-                <div className="mb-2 block">
-                  <Label htmlFor="Picture" value="Picture" />
-                </div>
                 {/* <FileInput
                   onChange={handleImage}
                   accept="image/png, image/jpg"
@@ -285,9 +282,9 @@ const Dashboard = () => {
                     }>
                         {({ open }) => {
                             return (
-                            <button className="button" onClick={() => open()}>
-                                Upload
-                            </button>
+                            <Button onClick={() => open()}>
+                                Upload Picture
+                            </Button>
                             );
                         }}
                     </CldUploadWidget>
