@@ -262,7 +262,7 @@ const Dashboard = () => {
                 </Dropdown>
               </div>
             </form>
-            <CldUploadWidget uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}
+            <CldUploadWidget uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET}
                     onSuccess={
                         (uploadResponse) => {
                     const imageUrl: ICloudImage = uploadResponse as ICloudImage;
