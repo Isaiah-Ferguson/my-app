@@ -5,6 +5,7 @@ import { Button, Label, TextInput } from 'flowbite-react'
 import { useRouter } from "next/navigation";
 import { createAccount, getLoggedInUserData, login } from "@/utils/Dataservices";
 import { IToken } from "@/Interfaces/Interfaces";
+import { CldUploadWidget } from "next-cloudinary";
 
 //By default next js components our server side (Server side components cannot have useStates in them)
 //'use client' turns the component into client component.
@@ -79,7 +80,23 @@ export default function Home() {
       <Button onClick={handleSubmit}>Submit</Button>
     </form>
         </div>
-      <Button>Test</Button>
+        <CldUploadWidget
+            uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET}
+            options={{ sources: ['local'], resourceType: 'Image', multiple: false }}
+            onSuccess={ (uploadResponse) => {
+                    const imageUrl = uploadResponse;
+                    console.log(imageUrl);
+                        }
+                    }
+                    >
+                        {({ open }) => {
+                            return (
+                            <Button onClick={() => open()}>
+                                Upload Picture
+                            </Button>
+                            );
+                        }}
+                    </CldUploadWidget>
       </div>
   );
 }

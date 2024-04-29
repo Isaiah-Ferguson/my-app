@@ -262,13 +262,13 @@ const Dashboard = () => {
                 </Dropdown>
               </div>
             </form>
-            <CldUploadWidget uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET}
-              options={{ sources: ['local'] }}
-                    onSuccess={
-                        (uploadResponse) => {
+            <CldUploadWidget
+             uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET}
+            options={{ sources: ['local'], resourceType: 'image' }}
+            onSuccess={
+                (uploadResponse) => {
                     const imageUrl: ICloudImage = uploadResponse as ICloudImage;
-                    setImage(imageUrl.info.url)
-                            // You can use the imageUrl for further processing or display
+                    setImage(imageUrl.info.url);
                         }
                     }>
                         {({ open }) => {
